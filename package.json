@@ -1,6 +1,7 @@
 {
   "name": "ac-assistant-api",
   "version": "1.0.0",
+  "type": "commonjs",
   "dependencies": {
     "@google/generative-ai": "^0.7.0",
     "cors": "^2.8.5"
