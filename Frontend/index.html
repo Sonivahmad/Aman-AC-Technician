@@ -790,12 +790,10 @@
             <div class="ai-messages" id="aiMessages">
                 <div class="ai-msg bot" data-lang="ai-greeting">Hello! I'm your AC Assistant. How can I help you today?</div>
             </div>
-            <div class="ai-options">
-                <button onclick="sendAIQuery('AC not cooling')" data-lang="ac-not-cooling">AC not cooling</button>
-                <button onclick="sendAIQuery('Gas refill')" data-lang="gas-refill">Gas refill</button>
-                <button onclick="sendAIQuery('Installation')" data-lang="installation">Installation</button>
-                <button onclick="sendAIQuery('Emergency')" data-lang="emergency">Emergency</button>
-            </div>
+            <div class="ai-input-area">
+    <input type="text" id="aiUserInput" placeholder="Type your question..." style="width: calc(100% - 60px); padding: 10px; border: none; background: rgba(255,255,255,0.05); color: white; border-radius: 10px 0 0 10px;">
+    <button id="aiSendButton" style="width: 60px; padding: 10px; border: none; background: var(--primary); color: white; border-radius: 0 10px 10px 0; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+</div>
             <a href="https://wa.me/919568823827" target="_blank" class="btn" style="margin:15px; background:var(--success); color:white; justify-content:center;">
                 <i class="fab fa-whatsapp"></i> <span data-lang="talk-aman">Talk to Aman</span>
             </a>
@@ -1077,38 +1075,48 @@
         aiToggle.addEventListener('click', () => aiBox.classList.toggle('active'));
         closeAI.addEventListener('click', () => aiBox.classList.remove('active'));
 
-        function sendAIQuery(query) {
-            addMessage('user', query);
-            setTimeout(() => {
-                let reply = "";
-                if (query.includes('not cooling') || query.includes('ठंडा नहीं') || query.includes('ઠંડું નથી')) {
-                    reply = currentLang === 'en' ? "Check filters, thermostat, and outdoor unit. Still not working? Gas might be low. Cost: ₹1800–₹3500." :
-                            currentLang === 'hi' ? "फ़िल्टर, थर्मोस्टेट और आउटडोर यूनिट चेक करें। फिर भी काम न करे? गैस कम हो सकती है। लागत: ₹1800–₹3500." :
-                            "ફિલ્ટર, થર્મોસ્ટેટ અને આઉટડોર યુનિટ તપાસો. હજુ પણ કામ ન કરે? ગેસ ઓછો હોઈ શકે. કિંમત: ₹1800–₹3500.";
-                } else if (query.includes('Gas') || query.includes('गैस') || query.includes('ગેસ')) {
-                    reply = currentLang === 'en' ? "R32/R410A refill: ₹1800 (1 Ton), ₹2500 (1.5 Ton). Same-day service." :
-                            currentLang === 'hi' ? "R32/R410A रिफिल: ₹1800 (1 टन), ₹2500 (1.5 टन)। उसी दिन सेवा।" :
-                            "R32/R410A રિફિલ: ₹1800 (1 ટન), ₹2500 (1.5 ટન)। સમાન દિવસ સેવા.";
-                } else if (query.includes('Installation') || query.includes('लगवाना') || query.includes('લગાવવું')) {
-                    reply = currentLang === 'en' ? "Full installation: ₹1500–₹2500. Includes piping & testing." :
-                            currentLang === 'hi' ? "पूर्ण इंस्टॉलेशन: ₹1500–₹2500। पाइपिंग और टेस्टिंग शामिल।" :
-                            "સંપૂર્ણ ઇન્સ્ટોલેશન: ₹1500–₹2500। પાઇપિંગ અને ટેસ્ટિંગ સહિત.";
-                } else if (query.includes('Emergency') || query.includes('इमरजेंसी') || query.includes('ઇમરજન્સી')) {
-                    reply = currentLang === 'en' ? "24/7 service! We reach in <2 hours. Call: +91 95688 23827" :
-                            currentLang === 'hi' ? "24/7 सेवा! 2 घंटे में पहुंचते हैं। कॉल करें: +91 95688 23827" :
-                            "24/7 સેવા! 2 કલાકમાં પહોંચીએ છીએ। કૉલ કરો: +91 95688 23827";
-                }
-                addMessage('bot', reply);
-            }, 800);
-        }
+        async function sendAIQuery(query) {
+    // 1. Display user message and store in history
+    addMessage('user', query);
+    conversationHistory.push({ sender: 'user', content: query }); 
 
-        function addMessage(sender, text) {
-            const msg = document.createElement('div');
-            msg.className = `ai-msg ${sender}`;
-            msg.textContent = text;
-            aiMessages.appendChild(msg);
-            aiMessages.scrollTop = aiMessages.scrollHeight;
-        }
+    // 2. Add 'typing...' placeholder
+    const typingMsgElement = addMessage('bot', '...', true); 
+    
+    // The API endpoint is simply the relative path within your Vercel domain!
+    const API_URL = '/api/chat'; 
+
+    const dataToSend = {
+        userMessage: query,
+        conversationHistory: conversationHistory,
+        language: currentLang 
+    };
+
+    try {
+        const response = await fetch(API_URL, { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataToSend)
+        });
+
+        const data = await response.json();
+        const reply = data.reply;
+
+        // 3. Display AI response and store in history
+        typingMsgElement.remove(); 
+        addMessage('bot', reply); 
+        conversationHistory.push({ sender: 'model', content: reply }); 
+
+    } catch (error) {
+        typingMsgElement.remove();
+        addMessage('bot', `I'm currently unable to connect to the assistant server. Please use the WhatsApp link for immediate service!`);
+    }
+    
+    // Keep history manageable
+    if (conversationHistory.length > 10) {
+        conversationHistory = conversationHistory.slice(-10); 
+    }
+}
 
         // WhatsApp
         function sendWhatsApp(e) {
@@ -1183,6 +1191,48 @@
                 contactForm.addEventListener('submit', sendWhatsApp);
             }
         });
+
+        // --- NEW: Global Conversation State ---
+let conversationHistory = []; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... [Other DOMContentLoaded code] ...
+
+    const sendButton = document.getElementById('aiSendButton');
+    const inputField = document.getElementById('aiUserInput');
+    
+    // Add event listeners for the new input field
+    if (sendButton && inputField) {
+        sendButton.addEventListener('click', () => {
+            const query = inputField.value.trim();
+            if (query) {
+                sendAIQuery(query);
+                inputField.value = ''; // Clear input
+            }
+        });
+
+        // Send message when 'Enter' key is pressed
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    }
+});
+
+// Update the existing addMessage function to support temporary messages
+function addMessage(sender, text, isTemporary = false) {
+    const msg = document.createElement('div');
+    msg.className = `ai-msg ${sender} ${isTemporary ? 'temp-msg' : ''}`;
+    msg.textContent = text;
+    aiMessages.appendChild(msg);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+    
+    if (isTemporary) {
+        return msg; 
+    }
+}
+// -----------------------------------------------------------
     </script>
 </body>
 </html>

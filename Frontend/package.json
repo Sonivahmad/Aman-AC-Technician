@@ -1,0 +1,8 @@
+{
+  "name": "ac-assistant-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "@google/genai": "^0.1.0",
+    "cors": "^2.8.5"
+  }
+}
