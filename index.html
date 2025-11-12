@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Malik - AC Expert | Modern AC Service</title>
+    <meta name="description" content="Aman Malik - Top AC Technician in Rampur. Fast repair, installation & gas refill. Book via WhatsApp.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%234361ee' width='100' height='100'/><text x='50' y='60' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'>A</text></svg>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #06d6a0;
+            --danger: #ef476f;
+            --warning: #ffd166;
+            --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            --neumorph: 12px 12px 24px #0d0d0d, -12px -12px 24px #1f1f1f;
+                /* Floating button sizing & spacing variables (can be overridden in media queries) */
+                --float-size: 70px; /* diameter of floating buttons */
+                --float-gap: 12px;  /* gap between stacked floats */
+                --float-right: 20px; /* right offset from viewport */
+                --float-bottom: 20px; /* bottom offset for the lowest float (WhatsApp) */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f1a;
+            color: #e0e0e0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 26, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.6rem 0;
+            background: rgba(15, 15, 26, 0.9);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover { color: white; }
+        .nav-links a:hover::after { width: 100%; }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(67, 97, 238, 0.6);
+        }
+
+        .mobile-toggle { display: none; color: white; font-size: 1.6rem; cursor: pointer; }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.4rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #aaa;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 8px solid rgba(255,255,255,0.2);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero img:hover { transform: scale(1.05); }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #a0d8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: #a0d8ff;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(255,255,255,0.2);
+        }
+
+        /* Sections */
+        .section { padding: 6rem 0; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--accent), white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            font-size: 1.05rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image img:hover { transform: translateY(-10px); }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(67, 97, 238, 0.2);
+            color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(67, 97, 238, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(20, 20, 35, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--neumorph);
+            opacity: 0;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .service-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent), white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(67, 97, 238, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 0.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.3);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            --size: var(--float-size);
+            position: fixed;
+            bottom: var(--float-bottom);
+            right: var(--float-right);
+            width: var(--size);
+            height: var(--size);
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(var(--size) * 0.28);
+            box-shadow: 0 10px 30px rgba(6, 214, 160, 0.5);
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(6, 214, 160, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* AI Chat */
+    .ai-chat-float { position: fixed; bottom: calc(var(--float-bottom) + var(--float-size) + var(--float-gap)); right: var(--float-right); z-index: 1000; }
+    /* Ensure the icon inside the float scales and remains visible */
+    .whatsapp-float i,
+    .ai-chat-icon i {
+        display: inline-block;
+        width: auto;
+        height: auto;
+        font-size: calc(var(--float-size) * 0.45) !important; /* scale icon to float size */
+        line-height: 1;
+        vertical-align: middle;
+    }
+        .ai-chat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.6);
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .ai-chat-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .ai-chat-icon:hover { transform: scale(1.15) rotate(10deg); }
+
+        .ai-chat-box {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 360px;
+            background: rgba(20, 20, 35, 0.95);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            overflow: hidden;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ai-chat-box.active { transform: scale(1); }
+
+        .ai-chat-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .close-ai { cursor: pointer; font-size: 1.4rem; font-weight: bold; opacity: 0.8; }
+
+        .ai-messages {
+            padding: 1.2rem;
+            max-height: 320px;
+            overflow-y: auto;
+            background: rgba(15,15,26,0.8);
+        }
+
+        .ai-msg {
+            margin-bottom: 1rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            max-width: 85%;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-msg.user {
+            background: var(--primary);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 6px;
+        }
+
+        .ai-msg.bot {
+            background: rgba(255,255,255,0.1);
+            color: #ddd;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-right: auto;
+            border-bottom-left-radius: 6px;
+        }
+
+        .ai-options {
+            padding: 1.2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .ai-options button {
+            padding: 0.8rem;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.1);
+            color: #ddd;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .ai-options button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0f;
+            color: #777;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .nav-container { padding: 0 1.5rem; }
+            .container { padding: 0 1.5rem; }
+            .section { padding: 5rem 0; }
+            .section-title { font-size: 2.5rem; margin-bottom: 3rem; }
+            .services-grid { gap: 1.5rem; }
+        }
+
+        @media (max-width: 992px) {
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .hero img { width: 150px; height: 150px; }
+            .logo-text { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .about-text h3 { font-size: 1.6rem; }
+            .nav-links { gap: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(15,15,26,0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.4s ease;
+                backdrop-filter: blur(16px);
+                overflow-y: auto;
+            }
+            .nav-links.active { left: 0; }
+            .logo-text { font-size: 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .hero p { font-size: 0.95rem; }
+            .hero img { width: 130px; height: 130px; }
+            .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; justify-content: center; padding: 0.9rem 1.8rem; }
+            .section { padding: 3rem 0; }
+            .container { padding: 0 1rem; }
+            .about-text h3 { font-size: 1.4rem; }
+            .service-card { padding: 1.8rem; }
+            .service-icon { width: 70px; height: 70px; font-size: 1.8rem; }
+            .contact-content { gap: 2rem; }
+            .contact-info h3 { font-size: 1.4rem; }
+            .contact-item { gap: 0.8rem; margin-bottom: 1.2rem; padding: 0.8rem; }
+            .ai-chat-box { width: 280px; }
+            /* use variables for float size on medium screens */
+            :root { --float-size: 60px; --float-bottom: 22px; --float-right: 20px; --float-gap: 12px; }
+            .whatsapp-float, .ai-chat-icon { width: var(--float-size); height: var(--float-size); font-size: calc(var(--float-size) * 0.026 * 6); }
+            .whatsapp-float { bottom: var(--float-bottom); right: var(--float-right); }
+            .ai-chat-float { bottom: calc(var(--float-bottom) + var(--float-size) + var(--float-gap)); right: var(--float-right); }
+            .nav-container { padding: 0 1rem; }
+        }
+
+        @media (max-width: 576px) {
+            .logo-img { width: 38px; height: 38px; font-size: 1.2rem; }
+            .logo-text { font-size: 0.9rem; }
+            .hero { padding: 1rem; min-height: 80vh; }
+            .hero h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+            .hero .subtitle { font-size: 1rem; margin-bottom: 0.5rem; }
+            .hero p { font-size: 0.85rem; margin-bottom: 1.5rem; }
+            .hero img { width: 100px; height: 100px; }
+            .section { padding: 2rem 0; }
+            .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+            .container { padding: 0 1rem; }
+            .nav-container { padding: 0 0.8rem; }
+            .cta-buttons { gap: 0.8rem; }
+            .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+            .about-content { gap: 2rem; }
+            .about-text h3 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+            .about-text p { font-size: 0.95rem; margin-bottom: 1rem; }
+            .skills { gap: 0.6rem; margin-top: 1.2rem; }
+            .skill-tag { padding: 0.5rem 1rem; font-size: 0.8rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 1.5rem; }
+            .service-icon { width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 1rem; }
+            .service-card h3 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+            .service-card p { font-size: 0.85rem; }
+            .contact-content { gap: 1.5rem; }
+            .contact-info h3 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+            .contact-item { gap: 1rem; margin-bottom: 1rem; padding: 0.8rem; }
+            .contact-item i { font-size: 1.2rem; }
+            .form-group label { font-size: 0.9rem; }
+            .form-group input, .form-group select, .form-group textarea { padding: 0.8rem; font-size: 0.9rem; }
+            .ai-chat-box { width: 260px; }
+            /* small screens: override vars */
+            :root { --float-size: 54px; --float-bottom: 24px; --float-right: 20px; --float-gap: 14px; }
+            .whatsapp-float, .ai-chat-icon { width: var(--float-size); height: var(--float-size); font-size: calc(var(--float-size) * 0.025 * 6); }
+            .whatsapp-float { bottom: var(--float-bottom); right: var(--float-right); }
+            .ai-chat-float { bottom: calc(var(--float-bottom) + var(--float-size) + var(--float-gap)); right: var(--float-right); }
+            .footer { padding: 2rem 0; }
+            .footer p { font-size: 0.9rem; margin: 0.5rem 0; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img { width: 35px; height: 35px; font-size: 1rem; }
+            .logo-text { display: none; }
+            .hero h1 { font-size: 1.5rem; }
+            .hero .subtitle { font-size: 0.9rem; }
+            .hero p { font-size: 0.8rem; }
+            .hero img { width: 90px; height: 90px; }
+            .section-title { font-size: 1.3rem; }
+            .btn { padding: 0.7rem 1.3rem; font-size: 0.85rem; }
+            .about-text h3 { font-size: 1.1rem; }
+            .service-card { padding: 1.2rem; }
+            .service-icon { width: 55px; height: 55px; font-size: 1.3rem; }
+            .contact-item { flex-direction: column; }
+            .ai-chat-box { width: 240px; }
+            .ai-chat-header { padding: 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/919568823827?text=Hello%20Aman!" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="ai-chat-float" id="aiChatFloat">
+        <div class="ai-chat-icon" id="aiChatToggle">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="ai-chat-box" id="aiChatBox">
+            <div class="ai-chat-header">
+                <span><i class="fas fa-robot"></i> <span data-lang="ai-assistant">AC Assistant</span></span>
+                <span class="close-ai" id="closeAI">×</span>
+            </div>
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-msg bot" data-lang="ai-greeting">Hello! I'm your AC Assistant. How can I help you today?</div>
+            </div>
+            <div class="ai-options">
+                <button onclick="sendAIQuery('AC not cooling')" data-lang="ac-not-cooling">AC not cooling</button>
+                <button onclick="sendAIQuery('Gas refill')" data-lang="gas-refill">Gas refill</button>
+                <button onclick="sendAIQuery('Installation')" data-lang="installation">Installation</button>
+                <button onclick="sendAIQuery('Emergency')" data-lang="emergency">Emergency</button>
+            </div>
+            <a href="https://wa.me/919568823827" target="_blank" class="btn" style="margin:15px; background:var(--success); color:white; justify-content:center;">
+                <i class="fab fa-whatsapp"></i> <span data-lang="talk-aman">Talk to Aman</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-img">A</div>
+                <span class="logo-text">Aman Malik</span>
+            </a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#home" data-lang="home">Home</a>
+                <a href="#about" data-lang="about">About</a>
+                <a href="#services" data-lang="services">Services</a>
+                <a href="#contact" data-lang="contact">Contact</a>
+                <a href="#" class="btn-primary" onclick="openBooking()" data-lang="book">Book Now</a>
+                <div class="lang-switcher">
+                    <span class="lang-btn active" data-lang-code="en">EN</span>
+                    <span class="lang-btn" data-lang-code="hi">HI</span>
+                    <span class="lang-btn" data-lang-code="gu">GU</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="Aman-malik.png" alt="Aman Malik">
+            <h1 data-lang="name">Aman <span>Malik</span></h1>
+            <p class="subtitle" data-lang="title">Professional AC Technician</p>
+            <p data-lang="hero-desc">Fast, reliable AC repair, installation & maintenance in Dhawni, Rampur, Uttar Pradesh.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-outline" data-lang="contact">Get in Touch</a>
+                <a href="#" class="btn btn-primary" onclick="openBooking()" data-lang="book">Book Service</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title" data-lang="about-me">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-lang="exp-tech">Experienced AC Technician</h3>
+                    <p data-lang="exp-desc">With over <strong>8 years</strong> of hands-on experience, I specialize in diagnosing and fixing all types of air conditioning systems – split, window, cassette, and central ACs.</p>
+                    <p data-lang="priority">I pride myself on quick response times, transparent pricing, and guaranteed satisfaction. Your comfort is my priority.</p>
+                    <div class="skills">
+                        <span class="skill-tag">AC Repair</span>
+                        <span class="skill-tag">Gas Refill</span>
+                        <span class="skill-tag">Installation</span>
+                        <span class="skill-tag">Maintenance</span>
+                        <span class="skill-tag">24/7 Emergency</span>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="aman-working.png" alt="Aman at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services" style="background: rgba(15,15,26,0.5);">
+        <div class="container">
+            <h2 class="section-title" data-lang="services-title">My <span>Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3 data-lang="repair">AC Repair</h3>
+                    <p data-lang="repair-desc">Fixing cooling issues, strange noises, water leakage, and electrical faults.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+                    <h3 data-lang="gas">Gas Refill</h3>
+                    <p data-lang="gas-desc">Refrigerant top-up (R22, R32, R410A) with leak detection and pressure testing.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3 data-lang="install">Installation</h3>
+                    <p data-lang="install-desc">Professional mounting of split, window, and ducted AC units.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-wrench"></i></div>
+                    <h3 data-lang="maint">Maintenance</h3>
+                    <p data-lang="maint-desc">Regular cleaning, filter replacement, and performance check-ups.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-phone-volume"></i></div>
+                    <h3 data-lang="emergency">Emergency Service</h3>
+                    <p data-lang="emergency-desc">Available 24/7 for urgent breakdowns – same-day repair guaranteed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3 data-lang="home-office">Home & Office</h3>
+                    <p data-lang="home-office-desc">Serving residential homes, shops, offices, and industrial units.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-lang="contact-title">Get in <span>Touch</span></h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-lang="contact-details">Contact Details</h3>
+                    <a href="tel:+919568823827" class="contact-item" style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4 data-lang="phone">Phone</h4>
+                            <p>+91 95688 23827</p>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/919568823827?text=Hello%20Aman!" class="contact-item" target="_blank" style="text-decoration: none; color: inherit;">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4 data-lang="whatsapp">WhatsApp</h4>
+                            <p>+91 95688 23827</p>
+                        </div>
+                    </a>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4 data-lang="location">Location</h4>
+                            <p data-lang="location-desc">Dhawni, Rampur, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label data-lang="name-label">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang="phone-label">Phone</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang="service-label">Service</label>
+                            <select id="service" required>
+                                <option value="">Select Service</option>
+                                <option value="AC Repair">AC Repair</option>
+                                <option value="Gas Refill">Gas Refill</option>
+                                <option value="Installation">Installation</option>
+                                <option value="Maintenance">Maintenance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-lang="message-label">Message (Optional)</label>
+                            <textarea id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;" data-lang="send-wa">Send via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong data-lang="name">Aman Malik</strong> – <span data-lang="footer-desc">Expert AC Technician in Dhawni, Rampur</span></p>
+            <p data-lang="call-wa">Call or WhatsApp: <a href="tel:+919568823827" style="color:#06d6a0;">+91 95688 23827</a></p>
+            <p data-lang="copyright">© 2025 All Rights Reserved. Fast & Reliable AC Services.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Full Translations
+        const translations = {
+            en: { /* All English */ },
+            hi: { /* All Hindi */ },
+            gu: { /* All Gujarati */ }
+        };
+
+        Object.assign(translations.en, {
+            home: "Home", about: "About", services: "Services", contact: "Contact", book: "Book Now",
+            name: "Aman Malik", title: "Professional AC Technician", "hero-desc": "Fast, reliable AC repair, installation & maintenance in Dhawni, Rampur, Uttar Pradesh.",
+            "about-me": "About <span>Me</span>", "exp-tech": "Experienced AC Technician", "exp-desc": "With over <strong>8 years</strong> of hands-on experience, I specialize in diagnosing and fixing all types of air conditioning systems – split, window, cassette, and central ACs.",
+            priority: "I pride myself on quick response times, transparent pricing, and guaranteed satisfaction. Your comfort is my priority.",
+            "services-title": "My <span>Services</span>", repair: "AC Repair", "repair-desc": "Fixing cooling issues, strange noises, water leakage, and electrical faults.",
+            gas: "Gas Refill", "gas-desc": "Refrigerant top-up (R22, R32, R410A) with leak detection and pressure testing.",
+            install: "Installation", "install-desc": "Professional mounting of split, window, and ducted AC units.",
+            maint: "Maintenance", "maint-desc": "Regular cleaning, filter replacement, and performance check-ups.",
+            emergency: "Emergency Service", "emergency-desc": "Available 24/7 for urgent breakdowns – same-day repair guaranteed.",
+            "home-office": "Home & Office", "home-office-desc": "Serving residential homes, shops, offices, and industrial units.",
+            "contact-title": "Get in <span>Touch</span>", "contact-details": "Contact Details", phone: "Phone", whatsapp: "WhatsApp", location: "Location", "location-desc": "Dhawni, Rampur, Uttar Pradesh",
+            "name-label": "Name", "phone-label": "Phone", "service-label": "Service", "message-label": "Message (Optional)", "send-wa": "Send via WhatsApp",
+            "footer-desc": "Expert AC Technician in Dhawni, Rampur", "call-wa": "Call or WhatsApp: ", copyright: "© 2025 All Rights Reserved. Fast & Reliable AC Services.",
+            "ai-assistant": "AC Assistant", "ai-greeting": "Hello! I'm your AC Assistant. How can I help you today?",
+            "ac-not-cooling": "AC not cooling", "gas-refill": "Gas refill", installation: "Installation", emergency: "Emergency", "talk-aman": "Talk to Aman"
+        });
+
+        Object.assign(translations.hi, {
+            home: "होम", about: "हमारे बारे में", services: "सेवाएं", contact: "संपर्क", book: "अभी बुक करें",
+            name: "अमन मलिक", title: "प्रोफेशनल AC टेक्नीशियन", "hero-desc": "धौनी, रामपुर, उत्तर प्रदेश में तेज़, विश्वसनीय AC रिपेयर, इंस्टॉलेशन और मेंटेनेंस।",
+            "about-me": "मेरे <span>बारे में</span>", "exp-tech": "अनुभवी AC टेक्नीशियन", "exp-desc": "8 साल से अधिक के अनुभव के साथ, मैं सभी प्रकार के AC सिस्टम – स्प्लिट, विंडो, कैसेट, सेंट्रल AC की मरम्मत करता हूँ।",
+            priority: "मुझे तेज़ रिस्पॉन्स, पारदर्शी मूल्य और गारंटीशुदा संतुष्टि पर गर्व है। आपका आराम मेरी प्राथमिकता है।",
+            "services-title": "मेरी <span>सेवाएं</span>", repair: "AC रिपेयर", "repair-desc": "कूलिंग की समस्या, अजीब आवाज़, पानी लीकेज, और इलेक्ट्रिकल फॉल्ट ठीक करना।",
+            gas: "गैस रिफिल", "gas-desc": "रेफ्रिजरेंट टॉप-अप (R22, R32, R410A) लीक डिटेक्शन और प्रेशर टेस्टिंग के साथ।",
+            install: "इंस्टॉलेशन", "install-desc": "स्प्लिट, विंडो और डक्टेड AC यूनिट का प्रोफेशनल माउंटिंग।",
+            maint: "मेंटेनेंस", "maint-desc": "नियमित सफाई, फिल्टर बदलना और परफॉर्मेंस चेक-अप।",
+            emergency: "इमरजेंसी सेवा", "emergency-desc": "24/7 उपलब्ध – तत्काल ब्रेकडाउन के लिए उसी दिन रिपेयर।",
+            "home-office": "घर और ऑफिस", "home-office-desc": "रेजिडेंशियल घर, दुकानें, ऑफिस और इंडस्ट्रियल यूनिट्स की सेवा।",
+            "contact-title": "संपर्क <span>करें</span>", "contact-details": "संपर्क विवरण", phone: "फोन", whatsapp: "व्हाट्सएप", location: "स्थान", "location-desc": "धौनी, रामपुर, उत्तर प्रदेश",
+            "name-label": "नाम", "phone-label": "फोन", "service-label": "सेवा", "message-label": "संदेश (वैकल्पिक)", "send-wa": "व्हाट्सएप पर भेजें",
+            "footer-desc": "धौनी, रामपुर में विशेषज्ञ AC टेक्नीशियन", "call-wa": "कॉल या व्हाट्सएप: ", copyright: "© 2025 सर्वाधिकार सुरक्षित। तेज़ और विश्वसनीय AC सेवाएं।",
+            "ai-assistant": "AC सहायक", "ai-greeting": "नमस्ते! मैं आपका AC सहायक हूँ। मैं आपकी कैसे मदद कर सकता हूँ?",
+            "ac-not-cooling": "AC ठंडा नहीं कर रहा", "gas-refill": "गैस भरवाना है", installation: "नया AC लगवाना", emergency: "इमरजेंसी रिपेयर", "talk-aman": "अमन से बात करें"
+        });
+
+        Object.assign(translations.gu, {
+            home: "હોમ", about: "અમારા વિશે", services: "સેવાઓ", contact: "સંપર્ક", book: "હમણાં બુક કરો",
+            name: "અમન મલિક", title: "પ્રોફેશનલ AC ટેકનિશિયન", "hero-desc": "ધૌની, રામપુર, ઉત્તર પ્રદેશમાં ઝડપી, વિશ્વસનીય AC રિપેર, ઇન્સ્ટોલેશન અને જાળવણી.",
+            "about-me": "મારા <span>વિશે</span>", "exp-tech": "અનુભવી AC ટેકનિશિયન", "exp-desc": "8 વર્ષથી વધુ અનુભવ સાથે, હું તમામ પ્રકારના AC સિસ્ટમ – સ્પ્લિટ, વિન્ડો, કેસેટ, સેન્ટ્રલ ACનું નિદાન અને સમારકામ કરું છું.",
+            priority: "મને ઝડપી પ્રતિસાદ, પારદર્શી કિંમત અને ગેરંટીશુદ્ધ સંતોષ પર ગર્વ છે. તમારી આરામદાયકતા મારી પ્રાથમિકતા છે.",
+            "services-title": "મારી <span>સેવાઓ</span>", repair: "AC રિપેર", "repair-desc": "કૂલિંગ સમસ્યા, અજીબ અવાજ, પાણી લીકેજ, અને ઇલેક્ટ્રિકલ ફોલ્ટ ઠીક કરવા.",
+            gas: "ગેસ રિફિલ", "gas-desc": "રેફ્રિજરન્ટ ટોપ-અપ (R22, R32, R410A) લીક ડિટેક્શન અને પ્રેશર ટેસ્ટિંગ સાથે.",
+            install: "ઇન્સ્ટોલેશન", "install-desc": "સ્પ્લિટ, વિન્ડો અને ડક્ટેડ AC યુનિટનું પ્રોફેશનલ માઉન્ટિંગ.",
+            maint: "જાળવણી", "maint-desc": "નિયમિત સફાઈ, ફિલ્ટર બદલવું અને પર્ફોર્મન્સ ચેક-અપ.",
+            emergency: "ઇમરજન્સી સેવા", "emergency-desc": "24/7 ઉપલબ્ધ – તાત્કાલિક બ્રેકડાઉન માટે સમાન દિવસ રિપેર.",
+            "home-office": "ઘર અને ઓફિસ", "home-office-desc": "રેસિડેન્શિયલ ઘર, દુકાનો, ઓફિસ અને ઔદ્યોગિક એકમોની સેવા.",
+            "contact-title": "સંપર્ક <span>કરો</span>", "contact-details": "સંપર્ક વિગતો", phone: "ફોન", whatsapp: "વોટ્સએપ", location: "સ્થાન", "location-desc": "ધૌની, રામપુર, ઉત્તર પ્રદેશ",
+            "name-label": "નામ", "phone-label": "ફોન", "service-label": "સેવા", "message-label": "સંદેશ (વૈકલ્પિક)", "send-wa": "વોટ્સએપ પર મોકલો",
+            "footer-desc": "ધૌની, રામપુરમાં નિષ્ણાત AC ટેકનિશિયન", "call-wa": "કૉલ કરો અથવા વૉટ્સએપ કરો: ", copyright: "© 2025 બધા હકો સુરક્ષિત. ઝડપી અને વિશ્વસનીય AC સેવાઓ.",
+            "ai-assistant": "AC સહાયક", "ai-greeting": "નમસ્તે! હું તમારો AC સહાયક છું. હું તમને કેવી રીતે મદદ કરી શકું?",
+            "ac-not-cooling": "AC ઠંડું નથી કરતું", "gas-refill": "ગેસ ભરાવવું છે", installation: "નવું AC લગાવવું", emergency: "ઇમરજન્સી રિપેર", "talk-aman": "અમન સાથે વાત કરો"
+        });
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.langCode === lang);
+            });
+            updateAIBotLanguage();
+        }
+
+        function updateAIBotLanguage() {
+            const greeting = document.querySelector('.ai-msg.bot');
+            if (greeting) greeting.innerHTML = translations[currentLang]['ai-greeting'];
+            document.querySelectorAll('.ai-options button').forEach((btn, i) => {
+                const keys = ['ac-not-cooling', 'gas-refill', 'installation', 'emergency'];
+                btn.innerHTML = translations[currentLang][keys[i]];
+            });
+            document.querySelector('.ai-chat-header span:nth-child(1)').innerHTML = '<i class="fas fa-robot"></i> ' + translations[currentLang]['ai-assistant'];
+        }
+
+        // Language Switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.langCode));
+        });
+
+        // AI Bot
+        const aiToggle = document.getElementById('aiChatToggle');
+        const aiBox = document.getElementById('aiChatBox');
+        const closeAI = document.getElementById('closeAI');
+        const aiMessages = document.getElementById('aiMessages');
+
+        aiToggle.addEventListener('click', () => aiBox.classList.toggle('active'));
+        closeAI.addEventListener('click', () => aiBox.classList.remove('active'));
+
+        function sendAIQuery(query) {
+            addMessage('user', query);
+            setTimeout(() => {
+                let reply = "";
+                if (query.includes('not cooling') || query.includes('ठंडा नहीं') || query.includes('ઠંડું નથી')) {
+                    reply = currentLang === 'en' ? "Check filters, thermostat, and outdoor unit. Still not working? Gas might be low. Cost: ₹1800–₹3500." :
+                            currentLang === 'hi' ? "फ़िल्टर, थर्मोस्टेट और आउटडोर यूनिट चेक करें। फिर भी काम न करे? गैस कम हो सकती है। लागत: ₹1800–₹3500." :
+                            "ફિલ્ટર, થર્મોસ્ટેટ અને આઉટડોર યુનિટ તપાસો. હજુ પણ કામ ન કરે? ગેસ ઓછો હોઈ શકે. કિંમત: ₹1800–₹3500.";
+                } else if (query.includes('Gas') || query.includes('गैस') || query.includes('ગેસ')) {
+                    reply = currentLang === 'en' ? "R32/R410A refill: ₹1800 (1 Ton), ₹2500 (1.5 Ton). Same-day service." :
+                            currentLang === 'hi' ? "R32/R410A रिफिल: ₹1800 (1 टन), ₹2500 (1.5 टन)। उसी दिन सेवा।" :
+                            "R32/R410A રિફિલ: ₹1800 (1 ટન), ₹2500 (1.5 ટન)। સમાન દિવસ સેવા.";
+                } else if (query.includes('Installation') || query.includes('लगवाना') || query.includes('લગાવવું')) {
+                    reply = currentLang === 'en' ? "Full installation: ₹1500–₹2500. Includes piping & testing." :
+                            currentLang === 'hi' ? "पूर्ण इंस्टॉलेशन: ₹1500–₹2500। पाइपिंग और टेस्टिंग शामिल।" :
+                            "સંપૂર્ણ ઇન્સ્ટોલેશન: ₹1500–₹2500। પાઇપિંગ અને ટેસ્ટિંગ સહિત.";
+                } else if (query.includes('Emergency') || query.includes('इमरजेंसी') || query.includes('ઇમરજન્સી')) {
+                    reply = currentLang === 'en' ? "24/7 service! We reach in <2 hours. Call: +91 95688 23827" :
+                            currentLang === 'hi' ? "24/7 सेवा! 2 घंटे में पहुंचते हैं। कॉल करें: +91 95688 23827" :
+                            "24/7 સેવા! 2 કલાકમાં પહોંચીએ છીએ। કૉલ કરો: +91 95688 23827";
+                }
+                addMessage('bot', reply);
+            }, 800);
+        }
+
+        function addMessage(sender, text) {
+            const msg = document.createElement('div');
+            msg.className = `ai-msg ${sender}`;
+            msg.textContent = text;
+            aiMessages.appendChild(msg);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+
+        // WhatsApp
+        function sendWhatsApp(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !service) {
+                alert('Please fill all required fields.');
+                return false;
+            }
+
+            const plain = `Hello Aman!\n\nName: ${name}\nPhone: ${phone}\nService: ${service}\nMessage: ${message || 'None'}`;
+            const url = `https://wa.me/919568823827?text=${encodeURIComponent(plain)}`;
+
+            // Try opening in a new tab; fallback to navigating the current window (mobile friendly)
+            try {
+                const newWin = window.open(url, '_blank');
+                if (!newWin) {
+                    // Popup blocked, fallback
+                    window.location.href = url;
+                }
+            } catch (err) {
+                window.location.href = url;
+            }
+
+            const form = document.getElementById('contactForm');
+            if (form) form.reset();
+            return false;
+        }
+
+        function openBooking() {
+            const text = currentLang === 'en' ? "Hello Aman! I want to book AC service." :
+                         currentLang === 'hi' ? "हेलो अमन! मुझे AC सर्विस बुक करनी है।" :
+                         "હેલો અમન! મારે AC સર્વિસ બુક કરવી છે.";
+            window.open(`https://wa.me/919568823827?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // Mobile Menu
+        document.getElementById('mobile-toggle').addEventListener('click', () => {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            const icon = document.querySelector('#mobile-toggle i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Scroll Effects
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            document.querySelectorAll('.service-card').forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                    card.classList.add('visible');
+                }
+            });
+        });
+
+        // Init
+        setLanguage(currentLang);
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.service-card').forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight) {
+                    card.classList.add('visible');
+                }
+            });
+
+            // Bind contact form submit via JS to ensure consistent behavior across browsers
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', sendWhatsApp);
+            }
+        });
+    </script>
+</body>
+</html>
